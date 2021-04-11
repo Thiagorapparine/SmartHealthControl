@@ -1,0 +1,25 @@
+{
+  "tccSmartHealthControlApp": {
+    "saudeTipo": {
+      "home": {
+        "title": "Saude Tipos",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Saude Tipo",
+        "createOrEditLabel": "Create or edit a Saude Tipo",
+        "notFound": "No Saude Tipos found"
+      },
+      "created": "A new Saude Tipo is created with identifier {{ param }}",
+      "updated": "A Saude Tipo is updated with identifier {{ param }}",
+      "deleted": "A Saude Tipo is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Saude Tipo {{ id }}?"
+      },
+      "detail": {
+        "title": "Saude Tipo"
+      },
+      "id": "ID",
+      "tipoIdentificacao": "Tipo Identificacao",
+      "tipoDescricao": "Tipo Descricao"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="profissionais">
+      <h2 data-cy="profissionaisDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.profissionais.detail.title">Profissionais</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ profissionais.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalNome">Profissional Nome</span></dt>
+        <dd>
+          <span>{{ profissionais.profissionalNome }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraInicio">Profissional Hora Inicio</span></dt>
+        <dd>
+          <span>{{ profissionais.profissionalHoraInicio }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraFim">Profissional Hora Fim</span></dt>
+        <dd>
+          <span>{{ profissionais.profissionalHoraFim }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.profissionais.estados">Estados</span></dt>
+        <dd>
+          <div *ngIf="profissionais.estados">
+            <a [routerLink]="['/estados', profissionais.estados?.id, 'view']">{{ profissionais.estados?.estadosSigla }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.profissionais.setorSaude">Setor Saude</span></dt>
+        <dd>
+          <div *ngIf="profissionais.setorSaude">
+            <a [routerLink]="['/setor-saude', profissionais.setorSaude?.id, 'view']">{{ profissionais.setorSaude?.setorSaude }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/profissionais', profissionais.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

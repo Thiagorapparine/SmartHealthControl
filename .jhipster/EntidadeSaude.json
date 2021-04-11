@@ -1,0 +1,73 @@
+{
+  "name": "EntidadeSaude",
+  "fields": [
+    {
+      "fieldName": "entidadeNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entidadeSetor",
+      "fieldType": "SetorEntidade",
+      "fieldValues": "Publica,Privada",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "entidadeEndereco",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "saudeTipo",
+      "otherEntityRelationshipName": "entidadeSaude",
+      "relationshipName": "saudeTipo",
+      "otherEntityField": "tipoIdentificacao",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "entidadeSaude",
+      "relationshipName": "estados",
+      "otherEntityField": "estadosSigla",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "cidades",
+      "otherEntityRelationshipName": "entidadeSaude",
+      "relationshipName": "cidades",
+      "otherEntityField": "cidadeNome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "tiposProcedimento",
+      "otherEntityRelationshipName": "entidadeNome",
+      "relationshipName": "tiposProcedimento",
+      "otherEntityField": "procedimentoNome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "profissionais",
+      "otherEntityRelationshipName": "entidadeNome",
+      "relationshipName": "profissionais",
+      "otherEntityField": "profissionalNome",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "entidade_saude",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204516"
+}

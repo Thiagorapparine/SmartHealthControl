@@ -1,0 +1,48 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="examesAgenda">
+      <h2 data-cy="examesAgendaDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.examesAgenda.detail.title">Exames Agenda</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ examesAgenda.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.examesAgenda.agendamentoData">Agendamento Data</span></dt>
+        <dd>
+          <span>{{ examesAgenda.agendamentoData | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.examesAgenda.tiposProcedimento">Tipos Procedimento</span></dt>
+        <dd>
+          <div *ngIf="examesAgenda.tiposProcedimento">
+            <a [routerLink]="['/tipos-procedimento', examesAgenda.tiposProcedimento?.id, 'view']">{{
+              examesAgenda.tiposProcedimento?.procedimentoNome
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.examesAgenda.entidadeSaude">Entidade Saude</span></dt>
+        <dd>
+          <div *ngIf="examesAgenda.entidadeSaude">
+            <a [routerLink]="['/entidade-saude', examesAgenda.entidadeSaude?.id, 'view']">{{ examesAgenda.entidadeSaude?.entidadeNome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/exames-agenda', examesAgenda.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

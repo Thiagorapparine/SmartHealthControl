@@ -1,0 +1,30 @@
+{
+  "name": "Cidades",
+  "fields": [
+    {
+      "fieldName": "cidadeNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "cidades",
+      "relationshipName": "estados",
+      "otherEntityField": "estadosSigla",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "cidades",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204522"
+}

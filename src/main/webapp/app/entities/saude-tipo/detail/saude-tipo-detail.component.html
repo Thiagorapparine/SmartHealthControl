@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="saudeTipo">
+      <h2 data-cy="saudeTipoDetailsHeading"><span jhiTranslate="tccSmartHealthControlApp.saudeTipo.detail.title">Saude Tipo</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ saudeTipo.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.saudeTipo.tipoIdentificacao">Tipo Identificacao</span></dt>
+        <dd>
+          <span>{{ saudeTipo.tipoIdentificacao }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.saudeTipo.tipoDescricao">Tipo Descricao</span></dt>
+        <dd>
+          <span>{{ saudeTipo.tipoDescricao }}</span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/saude-tipo', saudeTipo.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

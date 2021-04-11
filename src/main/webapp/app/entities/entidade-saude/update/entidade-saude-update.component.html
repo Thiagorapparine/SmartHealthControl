@@ -1,0 +1,209 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-entidade-saude-heading"
+        data-cy="EntidadeSaudeCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.entidadeSaude.home.createOrEditLabel"
+      >
+        Create or edit a Entidade Saude
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeNome" for="field_entidadeNome"
+            >Entidade Nome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="entidadeNome"
+            id="field_entidadeNome"
+            data-cy="entidadeNome"
+            formControlName="entidadeNome"
+          />
+          <div
+            *ngIf="editForm.get('entidadeNome')!.invalid && (editForm.get('entidadeNome')!.dirty || editForm.get('entidadeNome')!.touched)"
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('entidadeNome')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeSetor" for="field_entidadeSetor"
+            >Entidade Setor</label
+          >
+          <select
+            class="form-control"
+            name="entidadeSetor"
+            formControlName="entidadeSetor"
+            id="field_entidadeSetor"
+            data-cy="entidadeSetor"
+          >
+            <option [ngValue]="null">{{ 'tccSmartHealthControlApp.SetorEntidade.null' | translate }}</option>
+            <option value="Publica">{{ 'tccSmartHealthControlApp.SetorEntidade.Publica' | translate }}</option>
+            <option value="Privada">{{ 'tccSmartHealthControlApp.SetorEntidade.Privada' | translate }}</option>
+          </select>
+          <div
+            *ngIf="
+              editForm.get('entidadeSetor')!.invalid && (editForm.get('entidadeSetor')!.dirty || editForm.get('entidadeSetor')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('entidadeSetor')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeEndereco"
+            for="field_entidadeEndereco"
+            >Entidade Endereco</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="entidadeEndereco"
+            id="field_entidadeEndereco"
+            data-cy="entidadeEndereco"
+            formControlName="entidadeEndereco"
+          />
+          <div
+            *ngIf="
+              editForm.get('entidadeEndereco')!.invalid &&
+              (editForm.get('entidadeEndereco')!.dirty || editForm.get('entidadeEndereco')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('entidadeEndereco')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.entidadeSaude.saudeTipo" for="field_saudeTipo"
+            >Saude Tipo</label
+          >
+          <select class="form-control" id="field_saudeTipo" data-cy="saudeTipo" name="saudeTipo" formControlName="saudeTipo">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="saudeTipoOption.id === editForm.get('saudeTipo')!.value?.id ? editForm.get('saudeTipo')!.value : saudeTipoOption"
+              *ngFor="let saudeTipoOption of saudeTiposCollection; trackBy: trackSaudeTipoById"
+            >
+              {{ saudeTipoOption.tipoIdentificacao }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.entidadeSaude.estados" for="field_estados"
+            >Estados</label
+          >
+          <select class="form-control" id="field_estados" data-cy="estados" name="estados" formControlName="estados">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="estadosOption.id === editForm.get('estados')!.value?.id ? editForm.get('estados')!.value : estadosOption"
+              *ngFor="let estadosOption of estadosCollection; trackBy: trackEstadosById"
+            >
+              {{ estadosOption.estadosSigla }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.entidadeSaude.cidades" for="field_cidades"
+            >Cidades</label
+          >
+          <select class="form-control" id="field_cidades" data-cy="cidades" name="cidades" formControlName="cidades">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cidadesOption.id === editForm.get('cidades')!.value?.id ? editForm.get('cidades')!.value : cidadesOption"
+              *ngFor="let cidadesOption of cidadesCollection; trackBy: trackCidadesById"
+            >
+              {{ cidadesOption.cidadeNome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="tccSmartHealthControlApp.entidadeSaude.tiposProcedimento" for="field_tiposProcedimentos"
+            >Tipos Procedimento</label
+          >
+          <select
+            class="form-control"
+            id="field_tiposProcedimentos"
+            data-cy="tiposProcedimento"
+            multiple
+            name="tiposProcedimentos"
+            formControlName="tiposProcedimentos"
+          >
+            <option
+              [ngValue]="getSelectedTiposProcedimento(tiposProcedimentoOption, editForm.get('tiposProcedimentos')!.value)"
+              *ngFor="let tiposProcedimentoOption of tiposProcedimentosSharedCollection; trackBy: trackTiposProcedimentoById"
+            >
+              {{ tiposProcedimentoOption.procedimentoNome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label jhiTranslate="tccSmartHealthControlApp.entidadeSaude.profissionais" for="field_profissionais">Profissionais</label>
+          <select
+            class="form-control"
+            id="field_profissionais"
+            data-cy="profissionais"
+            multiple
+            name="profissionais"
+            formControlName="profissionais"
+          >
+            <option
+              [ngValue]="getSelectedProfissionais(profissionaisOption, editForm.get('profissionais')!.value)"
+              *ngFor="let profissionaisOption of profissionaisSharedCollection; trackBy: trackProfissionaisById"
+            >
+              {{ profissionaisOption.profissionalNome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

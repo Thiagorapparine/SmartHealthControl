@@ -1,0 +1,57 @@
+{
+  "name": "Profissionais",
+  "fields": [
+    {
+      "fieldName": "profissionalNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "profissionalHoraInicio",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
+    },
+    {
+      "fieldName": "profissionalHoraFim",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "pattern"],
+      "fieldValidateRulesPattern": "^(0[0-9]|1[0-9]|2[0-3]):[0-5][0-9]$"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "estados",
+      "otherEntityRelationshipName": "profissionais",
+      "relationshipName": "estados",
+      "otherEntityField": "estadosSigla",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "setorSaude",
+      "otherEntityRelationshipName": "profissionais",
+      "relationshipName": "setorSaude",
+      "otherEntityField": "setorSaude",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "entidadeSaude",
+      "otherEntityRelationshipName": "profissionais",
+      "relationshipName": "entidadeNome",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "profissionais",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204518"
+}

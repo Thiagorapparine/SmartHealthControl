@@ -1,0 +1,31 @@
+{
+  "tccSmartHealthControlApp": {
+    "entidadeSaude": {
+      "home": {
+        "title": "Entidade Saudes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Entidade Saude",
+        "createOrEditLabel": "Crear o editar Entidade Saude",
+        "notFound": "Ningún Entidade Saudes encontrado"
+      },
+      "created": "Un nuevo Entidade Saude ha sido creado con el identificador {{ param }}",
+      "updated": "Un Entidade Saude ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Entidade Saude ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Entidade Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Entidade Saude"
+      },
+      "id": "ID",
+      "entidadeNome": "Entidade Nome",
+      "entidadeSetor": "Entidade Setor",
+      "entidadeEndereco": "Entidade Endereco",
+      "saudeTipo": "Saude Tipo",
+      "estados": "Estados",
+      "cidades": "Cidades",
+      "tiposProcedimento": "Tipos Procedimento",
+      "profissionais": "Profissionais"
+    }
+  }
+}

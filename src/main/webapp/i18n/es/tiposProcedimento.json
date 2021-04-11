@@ -1,0 +1,27 @@
+{
+  "tccSmartHealthControlApp": {
+    "tiposProcedimento": {
+      "home": {
+        "title": "Tipos Procedimentos",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Tipos Procedimento",
+        "createOrEditLabel": "Crear o editar Tipos Procedimento",
+        "notFound": "Ningún Tipos Procedimentos encontrado"
+      },
+      "created": "Un nuevo Tipos Procedimento ha sido creado con el identificador {{ param }}",
+      "updated": "Un Tipos Procedimento ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Tipos Procedimento ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Tipos Procedimento {{ id }}?"
+      },
+      "detail": {
+        "title": "Tipos Procedimento"
+      },
+      "id": "ID",
+      "procedimentoNome": "Procedimento Nome",
+      "procedimentoDescricao": "Procedimento Descricao",
+      "setorSaude": "Setor Saude",
+      "entidadeNome": "Entidade Nome"
+    }
+  }
+}

@@ -1,0 +1,146 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-consultas-agenda-heading"
+        data-cy="ConsultasAgendaCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.consultasAgenda.home.createOrEditLabel"
+      >
+        Create or edit a Consultas Agenda
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.consultasAgenda.agendamentoData"
+            for="field_agendamentoData"
+            >Agendamento Data</label
+          >
+          <div class="d-flex">
+            <input
+              id="field_agendamentoData"
+              data-cy="agendamentoData"
+              type="datetime-local"
+              class="form-control"
+              name="agendamentoData"
+              formControlName="agendamentoData"
+              placeholder="YYYY-MM-DD HH:mm"
+            />
+          </div>
+          <div
+            *ngIf="
+              editForm.get('agendamentoData')!.invalid &&
+              (editForm.get('agendamentoData')!.dirty || editForm.get('agendamentoData')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('agendamentoData')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              [hidden]="!editForm.get('agendamentoData')?.errors?.ZonedDateTimelocal"
+              jhiTranslate="entity.validation.ZonedDateTimelocal"
+            >
+              This field should be a date and time.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.consultasAgenda.usuariosSaude" for="field_usuariosSaude"
+            >Usuarios Saude</label
+          >
+          <select
+            class="form-control"
+            id="field_usuariosSaude"
+            data-cy="usuariosSaude"
+            name="usuariosSaude"
+            formControlName="usuariosSaude"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                usuariosSaudeOption.id === editForm.get('usuariosSaude')!.value?.id
+                  ? editForm.get('usuariosSaude')!.value
+                  : usuariosSaudeOption
+              "
+              *ngFor="let usuariosSaudeOption of usuariosSaudesCollection; trackBy: trackUsuariosSaudeById"
+            >
+              {{ usuariosSaudeOption.usuarioNome }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.consultasAgenda.setorSaude" for="field_setorSaude"
+            >Setor Saude</label
+          >
+          <select class="form-control" id="field_setorSaude" data-cy="setorSaude" name="setorSaude" formControlName="setorSaude">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                setorSaudeOption.id === editForm.get('setorSaude')!.value?.id ? editForm.get('setorSaude')!.value : setorSaudeOption
+              "
+              *ngFor="let setorSaudeOption of setorSaudesCollection; trackBy: trackSetorSaudeById"
+            >
+              {{ setorSaudeOption.setorSaude }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.consultasAgenda.entidadeSaude" for="field_entidadeSaude"
+            >Entidade Saude</label
+          >
+          <select
+            class="form-control"
+            id="field_entidadeSaude"
+            data-cy="entidadeSaude"
+            name="entidadeSaude"
+            formControlName="entidadeSaude"
+          >
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                entidadeSaudeOption.id === editForm.get('entidadeSaude')!.value?.id
+                  ? editForm.get('entidadeSaude')!.value
+                  : entidadeSaudeOption
+              "
+              *ngFor="let entidadeSaudeOption of entidadeSaudesCollection; trackBy: trackEntidadeSaudeById"
+            >
+              {{ entidadeSaudeOption.entidadeNome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

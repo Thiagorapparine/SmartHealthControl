@@ -1,0 +1,74 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-cidades-heading"
+        data-cy="CidadesCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.cidades.home.createOrEditLabel"
+      >
+        Create or edit a Cidades
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.cidades.cidadeNome" for="field_cidadeNome"
+            >Cidade Nome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="cidadeNome"
+            id="field_cidadeNome"
+            data-cy="cidadeNome"
+            formControlName="cidadeNome"
+          />
+          <div *ngIf="editForm.get('cidadeNome')!.invalid && (editForm.get('cidadeNome')!.dirty || editForm.get('cidadeNome')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('cidadeNome')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.cidades.estados" for="field_estados">Estados</label>
+          <select class="form-control" id="field_estados" data-cy="estados" name="estados" formControlName="estados">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="estadosOption.id === editForm.get('estados')!.value?.id ? editForm.get('estados')!.value : estadosOption"
+              *ngFor="let estadosOption of estadosCollection; trackBy: trackEstadosById"
+            >
+              {{ estadosOption.estadosSigla }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

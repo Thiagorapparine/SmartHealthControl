@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="usuariosSaude">
+      <h2 data-cy="usuariosSaudeDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.detail.title">Usuarios Saude</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ usuariosSaude.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioFoto">Usuario Foto</span></dt>
+        <dd>
+          <div *ngIf="usuariosSaude.usuarioFoto">
+            <a (click)="openFile(usuariosSaude.usuarioFoto, usuariosSaude.usuarioFotoContentType)">
+              <img
+                [src]="'data:' + usuariosSaude.usuarioFotoContentType + ';base64,' + usuariosSaude.usuarioFoto"
+                style="max-width: 100%"
+                alt="usuariosSaude image"
+              />
+            </a>
+            {{ usuariosSaude.usuarioFotoContentType }}, {{ byteSize(usuariosSaude.usuarioFoto) }}
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioNome">Usuario Nome</span></dt>
+        <dd>
+          <span>{{ usuariosSaude.usuarioNome }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioCPF">Usuario CPF</span></dt>
+        <dd>
+          <span>{{ usuariosSaude.usuarioCPF }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioDataNascimento">Usuario Data Nascimento</span></dt>
+        <dd>
+          <span>{{ usuariosSaude.usuarioDataNascimento }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.user">User</span></dt>
+        <dd>
+          <span>{{ usuariosSaude.user?.login }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.usuariosSaude.cidades">Cidades</span></dt>
+        <dd>
+          <div *ngIf="usuariosSaude.cidades">
+            <a [routerLink]="['/cidades', usuariosSaude.cidades?.id, 'view']">{{ usuariosSaude.cidades?.cidadeNome }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/usuarios-saude', usuariosSaude.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

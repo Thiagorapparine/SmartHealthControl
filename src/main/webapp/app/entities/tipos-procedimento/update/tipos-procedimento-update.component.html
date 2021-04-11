@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-tipos-procedimento-heading"
+        data-cy="TiposProcedimentoCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.home.createOrEditLabel"
+      >
+        Create or edit a Tipos Procedimento
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.procedimentoNome"
+            for="field_procedimentoNome"
+            >Procedimento Nome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="procedimentoNome"
+            id="field_procedimentoNome"
+            data-cy="procedimentoNome"
+            formControlName="procedimentoNome"
+          />
+          <div
+            *ngIf="
+              editForm.get('procedimentoNome')!.invalid &&
+              (editForm.get('procedimentoNome')!.dirty || editForm.get('procedimentoNome')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('procedimentoNome')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.procedimentoDescricao"
+            for="field_procedimentoDescricao"
+            >Procedimento Descricao</label
+          >
+          <textarea
+            class="form-control"
+            name="procedimentoDescricao"
+            id="field_procedimentoDescricao"
+            data-cy="procedimentoDescricao"
+            formControlName="procedimentoDescricao"
+          ></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.setorSaude" for="field_setorSaude"
+            >Setor Saude</label
+          >
+          <select class="form-control" id="field_setorSaude" data-cy="setorSaude" name="setorSaude" formControlName="setorSaude">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                setorSaudeOption.id === editForm.get('setorSaude')!.value?.id ? editForm.get('setorSaude')!.value : setorSaudeOption
+              "
+              *ngFor="let setorSaudeOption of setorSaudesCollection; trackBy: trackSetorSaudeById"
+            >
+              {{ setorSaudeOption.setorSaude }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

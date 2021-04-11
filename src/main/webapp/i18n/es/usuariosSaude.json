@@ -1,0 +1,29 @@
+{
+  "tccSmartHealthControlApp": {
+    "usuariosSaude": {
+      "home": {
+        "title": "Usuarios Saudes",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Usuarios Saude",
+        "createOrEditLabel": "Crear o editar Usuarios Saude",
+        "notFound": "Ningún Usuarios Saudes encontrado"
+      },
+      "created": "Un nuevo Usuarios Saude ha sido creado con el identificador {{ param }}",
+      "updated": "Un Usuarios Saude ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Usuarios Saude ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Usuarios Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Usuarios Saude"
+      },
+      "id": "ID",
+      "usuarioFoto": "Usuario Foto",
+      "usuarioNome": "Usuario Nome",
+      "usuarioCPF": "Usuario CPF",
+      "usuarioDataNascimento": "Usuario Data Nascimento",
+      "user": "User",
+      "cidades": "Cidades"
+    }
+  }
+}

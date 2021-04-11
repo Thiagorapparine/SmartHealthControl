@@ -1,0 +1,25 @@
+{
+  "tccSmartHealthControlApp": {
+    "estados": {
+      "home": {
+        "title": "Estados",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Estados",
+        "createOrEditLabel": "Create or edit a Estados",
+        "notFound": "No Estados found"
+      },
+      "created": "A new Estados is created with identifier {{ param }}",
+      "updated": "A Estados is updated with identifier {{ param }}",
+      "deleted": "A Estados is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Estados {{ id }}?"
+      },
+      "detail": {
+        "title": "Estados"
+      },
+      "id": "ID",
+      "estadosNome": "Estados Nome",
+      "estadosSigla": "Estados Sigla"
+    }
+  }
+}

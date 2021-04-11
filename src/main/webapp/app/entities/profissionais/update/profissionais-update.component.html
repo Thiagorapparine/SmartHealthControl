@@ -1,0 +1,179 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-profissionais-heading"
+        data-cy="ProfissionaisCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.profissionais.home.createOrEditLabel"
+      >
+        Create or edit a Profissionais
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalNome"
+            for="field_profissionalNome"
+            >Profissional Nome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="profissionalNome"
+            id="field_profissionalNome"
+            data-cy="profissionalNome"
+            formControlName="profissionalNome"
+          />
+          <div
+            *ngIf="
+              editForm.get('profissionalNome')!.invalid &&
+              (editForm.get('profissionalNome')!.dirty || editForm.get('profissionalNome')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profissionalNome')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraInicio"
+            for="field_profissionalHoraInicio"
+            >Profissional Hora Inicio</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="profissionalHoraInicio"
+            id="field_profissionalHoraInicio"
+            data-cy="profissionalHoraInicio"
+            formControlName="profissionalHoraInicio"
+          />
+          <div
+            *ngIf="
+              editForm.get('profissionalHoraInicio')!.invalid &&
+              (editForm.get('profissionalHoraInicio')!.dirty || editForm.get('profissionalHoraInicio')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profissionalHoraInicio')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profissionalHoraInicio')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Profissional Hora Inicio' }"
+            >
+              This field should follow pattern for "Profissional Hora Inicio".
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraFim"
+            for="field_profissionalHoraFim"
+            >Profissional Hora Fim</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="profissionalHoraFim"
+            id="field_profissionalHoraFim"
+            data-cy="profissionalHoraFim"
+            formControlName="profissionalHoraFim"
+          />
+          <div
+            *ngIf="
+              editForm.get('profissionalHoraFim')!.invalid &&
+              (editForm.get('profissionalHoraFim')!.dirty || editForm.get('profissionalHoraFim')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profissionalHoraFim')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('profissionalHoraFim')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Profissional Hora Fim' }"
+            >
+              This field should follow pattern for "Profissional Hora Fim".
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.profissionais.estados" for="field_estados"
+            >Estados</label
+          >
+          <select class="form-control" id="field_estados" data-cy="estados" name="estados" formControlName="estados">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="estadosOption.id === editForm.get('estados')!.value?.id ? editForm.get('estados')!.value : estadosOption"
+              *ngFor="let estadosOption of estadosCollection; trackBy: trackEstadosById"
+            >
+              {{ estadosOption.estadosSigla }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.profissionais.setorSaude" for="field_setorSaude"
+            >Setor Saude</label
+          >
+          <select class="form-control" id="field_setorSaude" data-cy="setorSaude" name="setorSaude" formControlName="setorSaude">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="
+                setorSaudeOption.id === editForm.get('setorSaude')!.value?.id ? editForm.get('setorSaude')!.value : setorSaudeOption
+              "
+              *ngFor="let setorSaudeOption of setorSaudesCollection; trackBy: trackSetorSaudeById"
+            >
+              {{ setorSaudeOption.setorSaude }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

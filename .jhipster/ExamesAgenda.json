@@ -1,0 +1,38 @@
+{
+  "name": "ExamesAgenda",
+  "fields": [
+    {
+      "fieldName": "agendamentoData",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "tiposProcedimento",
+      "otherEntityRelationshipName": "examesAgenda",
+      "relationshipName": "tiposProcedimento",
+      "otherEntityField": "procedimentoNome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "entidadeSaude",
+      "otherEntityRelationshipName": "examesAgenda",
+      "relationshipName": "entidadeSaude",
+      "otherEntityField": "entidadeNome",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "exames_agenda",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204524"
+}

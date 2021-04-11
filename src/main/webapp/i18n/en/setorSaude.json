@@ -1,0 +1,24 @@
+{
+  "tccSmartHealthControlApp": {
+    "setorSaude": {
+      "home": {
+        "title": "Setor Saudes",
+        "refreshListLabel": "Refresh list",
+        "createLabel": "Create a new Setor Saude",
+        "createOrEditLabel": "Create or edit a Setor Saude",
+        "notFound": "No Setor Saudes found"
+      },
+      "created": "A new Setor Saude is created with identifier {{ param }}",
+      "updated": "A Setor Saude is updated with identifier {{ param }}",
+      "deleted": "A Setor Saude is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Setor Saude {{ id }}?"
+      },
+      "detail": {
+        "title": "Setor Saude"
+      },
+      "id": "ID",
+      "setorSaude": "Setor Saude"
+    }
+  }
+}

@@ -41,6 +41,19 @@
     "prodDatabaseType": "mongodb",
     "clientPackageManager": "npm",
     "clientThemeVariant": "",
-    "languages": ["pt-br", "en", "es"]
+    "languages": ["pt-br", "en", "es"],
+    "entities": [
+      "EntidadeSaude",
+      "SaudeTipo",
+      "Profissionais",
+      "SetorSaude",
+      "UsuariosSaude",
+      "Estados",
+      "Cidades",
+      "TiposProcedimento",
+      "ExamesAgenda",
+      "ConsultasAgenda"
+    ],
+    "lastLiquibaseTimestamp": 1618087525000
   }
 }

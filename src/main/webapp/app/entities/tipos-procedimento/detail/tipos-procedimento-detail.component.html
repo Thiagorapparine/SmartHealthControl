@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="tiposProcedimento">
+      <h2 data-cy="tiposProcedimentoDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.detail.title">Tipos Procedimento</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ tiposProcedimento.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.procedimentoNome">Procedimento Nome</span></dt>
+        <dd>
+          <span>{{ tiposProcedimento.procedimentoNome }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.procedimentoDescricao">Procedimento Descricao</span></dt>
+        <dd>
+          <span>{{ tiposProcedimento.procedimentoDescricao }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.tiposProcedimento.setorSaude">Setor Saude</span></dt>
+        <dd>
+          <div *ngIf="tiposProcedimento.setorSaude">
+            <a [routerLink]="['/setor-saude', tiposProcedimento.setorSaude?.id, 'view']">{{ tiposProcedimento.setorSaude?.setorSaude }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/tipos-procedimento', tiposProcedimento.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

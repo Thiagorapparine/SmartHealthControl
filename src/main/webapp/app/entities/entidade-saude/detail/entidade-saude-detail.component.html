@@ -1,0 +1,76 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="entidadeSaude">
+      <h2 data-cy="entidadeSaudeDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.detail.title">Entidade Saude</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ entidadeSaude.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeNome">Entidade Nome</span></dt>
+        <dd>
+          <span>{{ entidadeSaude.entidadeNome }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeSetor">Entidade Setor</span></dt>
+        <dd>
+          <span jhiTranslate="{{ 'tccSmartHealthControlApp.SetorEntidade.' + entidadeSaude.entidadeSetor }}">{{
+            entidadeSaude.entidadeSetor
+          }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.entidadeEndereco">Entidade Endereco</span></dt>
+        <dd>
+          <span>{{ entidadeSaude.entidadeEndereco }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.saudeTipo">Saude Tipo</span></dt>
+        <dd>
+          <div *ngIf="entidadeSaude.saudeTipo">
+            <a [routerLink]="['/saude-tipo', entidadeSaude.saudeTipo?.id, 'view']">{{ entidadeSaude.saudeTipo?.tipoIdentificacao }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.estados">Estados</span></dt>
+        <dd>
+          <div *ngIf="entidadeSaude.estados">
+            <a [routerLink]="['/estados', entidadeSaude.estados?.id, 'view']">{{ entidadeSaude.estados?.estadosSigla }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.cidades">Cidades</span></dt>
+        <dd>
+          <div *ngIf="entidadeSaude.cidades">
+            <a [routerLink]="['/cidades', entidadeSaude.cidades?.id, 'view']">{{ entidadeSaude.cidades?.cidadeNome }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.tiposProcedimento">Tipos Procedimento</span></dt>
+        <dd>
+          <span *ngFor="let tiposProcedimento of entidadeSaude.tiposProcedimentos; let last = last">
+            <a [routerLink]="['/tipos-procedimento', tiposProcedimento?.id, 'view']">{{ tiposProcedimento.procedimentoNome }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.entidadeSaude.profissionais">Profissionais</span></dt>
+        <dd>
+          <span *ngFor="let profissionais of entidadeSaude.profissionais; let last = last">
+            <a [routerLink]="['/profissionais', profissionais?.id, 'view']">{{ profissionais.profissionalNome }}</a
+            >{{ last ? '' : ', ' }}
+          </span>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/entidade-saude', entidadeSaude.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

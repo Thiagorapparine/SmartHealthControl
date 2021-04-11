@@ -1,0 +1,26 @@
+{
+  "tccSmartHealthControlApp": {
+    "examesAgenda": {
+      "home": {
+        "title": "Exames Agenda",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Exames Agenda",
+        "createOrEditLabel": "Criar ou editar Exames Agenda",
+        "notFound": "Nenhum Exames Agenda encontrado"
+      },
+      "created": "Um novo Exames Agenda foi criado com o identificador {{ param }}",
+      "updated": "Um Exames Agenda foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Exames Agenda foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Exames Agenda {{ id }}?"
+      },
+      "detail": {
+        "title": "Exames Agenda"
+      },
+      "id": "ID",
+      "agendamentoData": "Agendamento Data",
+      "tiposProcedimento": "Tipos Procedimento",
+      "entidadeSaude": "Entidade Saude"
+    }
+  }
+}

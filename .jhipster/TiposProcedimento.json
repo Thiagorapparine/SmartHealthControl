@@ -1,0 +1,42 @@
+{
+  "name": "TiposProcedimento",
+  "fields": [
+    {
+      "fieldName": "procedimentoNome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "procedimentoDescricao",
+      "fieldType": "byte[]",
+      "fieldTypeBlobContent": "text"
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "setorSaude",
+      "otherEntityRelationshipName": "tiposProcedimento",
+      "relationshipName": "setorSaude",
+      "otherEntityField": "setorSaude",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "many-to-many",
+      "otherEntityName": "entidadeSaude",
+      "otherEntityRelationshipName": "tiposProcedimento",
+      "relationshipName": "entidadeNome",
+      "ownerSide": false
+    }
+  ],
+  "entityTableName": "tipos_procedimento",
+  "dto": "no",
+  "pagination": "no",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204523"
+}

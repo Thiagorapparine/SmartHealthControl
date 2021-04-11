@@ -1,0 +1,56 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div *ngIf="consultasAgenda">
+      <h2 data-cy="consultasAgendaDetailsHeading">
+        <span jhiTranslate="tccSmartHealthControlApp.consultasAgenda.detail.title">Consultas Agenda</span>
+      </h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ consultasAgenda.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.consultasAgenda.agendamentoData">Agendamento Data</span></dt>
+        <dd>
+          <span>{{ consultasAgenda.agendamentoData | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.consultasAgenda.usuariosSaude">Usuarios Saude</span></dt>
+        <dd>
+          <div *ngIf="consultasAgenda.usuariosSaude">
+            <a [routerLink]="['/usuarios-saude', consultasAgenda.usuariosSaude?.id, 'view']">{{
+              consultasAgenda.usuariosSaude?.usuarioNome
+            }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.consultasAgenda.setorSaude">Setor Saude</span></dt>
+        <dd>
+          <div *ngIf="consultasAgenda.setorSaude">
+            <a [routerLink]="['/setor-saude', consultasAgenda.setorSaude?.id, 'view']">{{ consultasAgenda.setorSaude?.setorSaude }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="tccSmartHealthControlApp.consultasAgenda.entidadeSaude">Entidade Saude</span></dt>
+        <dd>
+          <div *ngIf="consultasAgenda.entidadeSaude">
+            <a [routerLink]="['/entidade-saude', consultasAgenda.entidadeSaude?.id, 'view']">{{
+              consultasAgenda.entidadeSaude?.entidadeNome
+            }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/consultas-agenda', consultasAgenda.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

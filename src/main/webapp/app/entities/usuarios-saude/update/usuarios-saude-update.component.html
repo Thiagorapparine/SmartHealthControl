@@ -1,0 +1,208 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+      <h2
+        id="jhi-usuarios-saude-heading"
+        data-cy="UsuariosSaudeCreateUpdateHeading"
+        jhiTranslate="tccSmartHealthControlApp.usuariosSaude.home.createOrEditLabel"
+      >
+        Create or edit a Usuarios Saude
+      </h2>
+
+      <div>
+        <jhi-alert-error></jhi-alert-error>
+
+        <div class="form-group" [hidden]="editForm.get('id')!.value == null">
+          <label class="form-control-label" jhiTranslate="global.field.id" for="field_id">ID</label>
+          <input type="text" class="form-control" name="id" id="field_id" data-cy="id" formControlName="id" [readonly]="true" />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioFoto" for="field_usuarioFoto"
+            >Usuario Foto</label
+          >
+          <div>
+            <img
+              [src]="'data:' + editForm.get('usuarioFotoContentType')!.value + ';base64,' + editForm.get('usuarioFoto')!.value"
+              style="max-height: 100px"
+              *ngIf="editForm.get('usuarioFoto')!.value"
+              alt="usuariosSaude image"
+            />
+            <div *ngIf="editForm.get('usuarioFoto')!.value" class="form-text text-danger clearfix">
+              <span class="pull-left"
+                >{{ editForm.get('usuarioFotoContentType')!.value }}, {{ byteSize(editForm.get('usuarioFoto')!.value) }}</span
+              >
+              <button
+                type="button"
+                (click)="clearInputImage('usuarioFoto', 'usuarioFotoContentType', 'file_usuarioFoto')"
+                class="btn btn-secondary btn-xs pull-right"
+              >
+                <fa-icon icon="times"></fa-icon>
+              </button>
+            </div>
+            <input
+              type="file"
+              id="file_usuarioFoto"
+              data-cy="usuarioFoto"
+              (change)="setFileData($event, 'usuarioFoto', true)"
+              accept="image/*"
+              jhiTranslate="entity.action.addimage"
+            />
+          </div>
+          <input
+            type="hidden"
+            class="form-control"
+            name="usuarioFoto"
+            id="field_usuarioFoto"
+            data-cy="usuarioFoto"
+            formControlName="usuarioFoto"
+          />
+          <input
+            type="hidden"
+            class="form-control"
+            name="usuarioFotoContentType"
+            id="field_usuarioFotoContentType"
+            formControlName="usuarioFotoContentType"
+          />
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioNome" for="field_usuarioNome"
+            >Usuario Nome</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="usuarioNome"
+            id="field_usuarioNome"
+            data-cy="usuarioNome"
+            formControlName="usuarioNome"
+          />
+          <div *ngIf="editForm.get('usuarioNome')!.invalid && (editForm.get('usuarioNome')!.dirty || editForm.get('usuarioNome')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuarioNome')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioCPF" for="field_usuarioCPF"
+            >Usuario CPF</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="usuarioCPF"
+            id="field_usuarioCPF"
+            data-cy="usuarioCPF"
+            formControlName="usuarioCPF"
+          />
+          <div *ngIf="editForm.get('usuarioCPF')!.invalid && (editForm.get('usuarioCPF')!.dirty || editForm.get('usuarioCPF')!.touched)">
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuarioCPF')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuarioCPF')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Usuario CPF' }"
+            >
+              This field should follow pattern for "Usuario CPF".
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label
+            class="form-control-label"
+            jhiTranslate="tccSmartHealthControlApp.usuariosSaude.usuarioDataNascimento"
+            for="field_usuarioDataNascimento"
+            >Usuario Data Nascimento</label
+          >
+          <input
+            type="text"
+            class="form-control"
+            name="usuarioDataNascimento"
+            id="field_usuarioDataNascimento"
+            data-cy="usuarioDataNascimento"
+            formControlName="usuarioDataNascimento"
+          />
+          <div
+            *ngIf="
+              editForm.get('usuarioDataNascimento')!.invalid &&
+              (editForm.get('usuarioDataNascimento')!.dirty || editForm.get('usuarioDataNascimento')!.touched)
+            "
+          >
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuarioDataNascimento')?.errors?.required"
+              jhiTranslate="entity.validation.required"
+            >
+              This field is required.
+            </small>
+            <small
+              class="form-text text-danger"
+              *ngIf="editForm.get('usuarioDataNascimento')?.errors?.pattern"
+              jhiTranslate="entity.validation.pattern"
+              [translateValues]="{ pattern: 'Usuario Data Nascimento' }"
+            >
+              This field should follow pattern for "Usuario Data Nascimento".
+            </small>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.usuariosSaude.user" for="field_user">User</label>
+          <select class="form-control" id="field_user" data-cy="user" name="user" formControlName="user">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="userOption.id === editForm.get('user')!.value?.id ? editForm.get('user')!.value : userOption"
+              *ngFor="let userOption of usersSharedCollection; trackBy: trackUserById"
+            >
+              {{ userOption.login }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-control-label" jhiTranslate="tccSmartHealthControlApp.usuariosSaude.cidades" for="field_cidades"
+            >Cidades</label
+          >
+          <select class="form-control" id="field_cidades" data-cy="cidades" name="cidades" formControlName="cidades">
+            <option [ngValue]="null"></option>
+            <option
+              [ngValue]="cidadesOption.id === editForm.get('cidades')!.value?.id ? editForm.get('cidades')!.value : cidadesOption"
+              *ngFor="let cidadesOption of cidadesCollection; trackBy: trackCidadesById"
+            >
+              {{ cidadesOption.cidadeNome }}
+            </option>
+          </select>
+        </div>
+      </div>
+
+      <div>
+        <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+          <fa-icon icon="ban"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+
+        <button
+          type="submit"
+          id="save-entity"
+          data-cy="entityCreateSaveButton"
+          [disabled]="editForm.invalid || isSaving"
+          class="btn btn-primary"
+        >
+          <fa-icon icon="save"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

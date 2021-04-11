@@ -1,0 +1,27 @@
+{
+  "tccSmartHealthControlApp": {
+    "consultasAgenda": {
+      "home": {
+        "title": "Consultas Agenda",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Consultas Agenda",
+        "createOrEditLabel": "Criar ou editar Consultas Agenda",
+        "notFound": "Nenhum Consultas Agenda encontrado"
+      },
+      "created": "Um novo Consultas Agenda foi criado com o identificador {{ param }}",
+      "updated": "Um Consultas Agenda foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Consultas Agenda foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Consultas Agenda {{ id }}?"
+      },
+      "detail": {
+        "title": "Consultas Agenda"
+      },
+      "id": "ID",
+      "agendamentoData": "Agendamento Data",
+      "usuariosSaude": "Usuarios Saude",
+      "setorSaude": "Setor Saude",
+      "entidadeSaude": "Entidade Saude"
+    }
+  }
+}

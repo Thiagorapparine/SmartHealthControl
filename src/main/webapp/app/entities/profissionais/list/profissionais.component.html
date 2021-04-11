@@ -1,0 +1,96 @@
+<div>
+  <h2 id="page-heading" data-cy="ProfissionaisHeading">
+    <span jhiTranslate="tccSmartHealthControlApp.profissionais.home.title">Profissionais</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info mr-2" (click)="loadAll()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="tccSmartHealthControlApp.profissionais.home.refreshListLabel">Refresh List</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-profissionais"
+        [routerLink]="['/profissionais/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="tccSmartHealthControlApp.profissionais.home.createLabel"> Create a new Profissionais </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="profissionais?.length === 0">
+    <span jhiTranslate="tccSmartHealthControlApp.profissionais.home.notFound">No profissionais found</span>
+  </div>
+
+  <div class="table-responsive" id="entities" *ngIf="profissionais && profissionais.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col"><span jhiTranslate="global.field.id">ID</span></th>
+          <th scope="col"><span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalNome">Profissional Nome</span></th>
+          <th scope="col">
+            <span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraInicio">Profissional Hora Inicio</span>
+          </th>
+          <th scope="col"><span jhiTranslate="tccSmartHealthControlApp.profissionais.profissionalHoraFim">Profissional Hora Fim</span></th>
+          <th scope="col"><span jhiTranslate="tccSmartHealthControlApp.profissionais.estados">Estados</span></th>
+          <th scope="col"><span jhiTranslate="tccSmartHealthControlApp.profissionais.setorSaude">Setor Saude</span></th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let profissionais of profissionais; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/profissionais', profissionais.id, 'view']">{{ profissionais.id }}</a>
+          </td>
+          <td>{{ profissionais.profissionalNome }}</td>
+          <td>{{ profissionais.profissionalHoraInicio }}</td>
+          <td>{{ profissionais.profissionalHoraFim }}</td>
+          <td>
+            <div *ngIf="profissionais.estados">
+              <a [routerLink]="['/estados', profissionais.estados?.id, 'view']">{{ profissionais.estados?.estadosSigla }}</a>
+            </div>
+          </td>
+          <td>
+            <div *ngIf="profissionais.setorSaude">
+              <a [routerLink]="['/setor-saude', profissionais.setorSaude?.id, 'view']">{{ profissionais.setorSaude?.setorSaude }}</a>
+            </div>
+          </td>
+          <td class="text-right">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/profissionais', profissionais.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/profissionais', profissionais.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(profissionais)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

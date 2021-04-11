@@ -1,0 +1,29 @@
+{
+  "tccSmartHealthControlApp": {
+    "profissionais": {
+      "home": {
+        "title": "Profissionais",
+        "refreshListLabel": "Refrescar lista",
+        "createLabel": "Crear nuevo Profissionais",
+        "createOrEditLabel": "Crear o editar Profissionais",
+        "notFound": "Ningún Profissionais encontrado"
+      },
+      "created": "Un nuevo Profissionais ha sido creado con el identificador {{ param }}",
+      "updated": "Un Profissionais ha sido actualizado con el identificador {{ param }}",
+      "deleted": "Un Profissionais ha sido eliminado con el identificador {{ param }}",
+      "delete": {
+        "question": "¿Seguro que quiere eliminar Profissionais {{ id }}?"
+      },
+      "detail": {
+        "title": "Profissionais"
+      },
+      "id": "ID",
+      "profissionalNome": "Profissional Nome",
+      "profissionalHoraInicio": "Profissional Hora Inicio",
+      "profissionalHoraFim": "Profissional Hora Fim",
+      "estados": "Estados",
+      "setorSaude": "Setor Saude",
+      "entidadeNome": "Entidade Nome"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "tccSmartHealthControlApp": {
+    "cidades": {
+      "home": {
+        "title": "Cidades",
+        "refreshListLabel": "Atualizar lista",
+        "createLabel": "Criar novo Cidades",
+        "createOrEditLabel": "Criar ou editar Cidades",
+        "notFound": "Nenhum Cidades encontrado"
+      },
+      "created": "Um novo Cidades foi criado com o identificador {{ param }}",
+      "updated": "Um Cidades foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Cidades foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Cidades {{ id }}?"
+      },
+      "detail": {
+        "title": "Cidades"
+      },
+      "id": "ID",
+      "cidadeNome": "Cidade Nome",
+      "estados": "Estados"
+    }
+  }
+}

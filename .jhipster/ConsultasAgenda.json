@@ -1,0 +1,46 @@
+{
+  "name": "ConsultasAgenda",
+  "fields": [
+    {
+      "fieldName": "agendamentoData",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "relationships": [
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "usuariosSaude",
+      "otherEntityRelationshipName": "consultasAgenda",
+      "relationshipName": "usuariosSaude",
+      "otherEntityField": "usuarioNome",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "setorSaude",
+      "otherEntityRelationshipName": "consultasAgenda",
+      "relationshipName": "setorSaude",
+      "otherEntityField": "setorSaude",
+      "ownerSide": true
+    },
+    {
+      "relationshipType": "one-to-one",
+      "otherEntityName": "entidadeSaude",
+      "otherEntityRelationshipName": "consultasAgenda",
+      "relationshipName": "entidadeSaude",
+      "otherEntityField": "entidadeNome",
+      "ownerSide": true
+    }
+  ],
+  "entityTableName": "consultas_agenda",
+  "dto": "no",
+  "pagination": "infinite-scroll",
+  "service": "serviceImpl",
+  "jpaMetamodelFiltering": false,
+  "fluentMethods": true,
+  "readOnly": false,
+  "embedded": false,
+  "applications": "*",
+  "changelogDate": "20210410204525"
+}
