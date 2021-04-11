@@ -1,10 +1,10 @@
 ## Informações Importantes
 
 1. Antes de iniciar o projeto, é necessário instalar os itens abaixo:
-1.1 - Node.JS ("npm install")
-1.2 - Maven
-1.3 - MongoDB
-2. Após a instalação de ambos, basta rodar o comando abaixo para iniciar o sistema.
+- Node.JS ("npm install")
+- Maven
+- MongoDB
+2. Após a instalação de todos, basta rodar o comando abaixo para iniciar o sistema.
 ```
 ./mvnw
 ```
